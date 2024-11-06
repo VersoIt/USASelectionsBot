@@ -1,8 +1,6 @@
 parse-url: https://www.bloomberg.com/graphics/2024-us-election-results/
-first-candidate-container: div.win-dem
+first-candidate-container: div.win-dem.svelte-1b5y444
 second-candidate-container: div.win-rep
 first-candidate-name: Harris
 second-candidate-name: Trump
 update-delay: 600000
-bot-token: 7520968914:AAFiBuE3drqDo5tuMM18wvBDQfean-ayOeM
-channel-id: -1002423126917

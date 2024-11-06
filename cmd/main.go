@@ -7,6 +7,7 @@ import (
 	"github.com/VersoIt/learning/internal/parser"
 	"github.com/VersoIt/learning/internal/service"
 	"github.com/VersoIt/learning/pkg/cfg"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"os/signal"
@@ -14,10 +15,14 @@ import (
 )
 
 func main() {
+	if err := godotenv.Load(".env"); err != nil {
+		panic(err)
+	}
+
 	config := cfg.Get()
 	electionsParser := parser.NewElection(config.ParseUrl, config.FirstCandidateContainer, config.SecondCandidateContainer)
 	electionService := service.NewElectionFetcher(electionsParser)
-	tgNotifier, err := notifier.NewTelegram(electionService, config.BotToken, config.ChannelId, config.UpdateDelay, notifier.Candidates{FirstCandidateName: config.FirstCandidateName, SecondCandidateName: config.SecondCandidateName})
+	tgNotifier, err := notifier.NewTelegram(electionService, os.Getenv("BOT_TOKEN"), os.Getenv("CHANNEL_ID"), config.UpdateDelay, notifier.Candidates{FirstCandidateName: config.FirstCandidateName, SecondCandidateName: config.SecondCandidateName})
 	if err != nil {
 		log.Println(err)
 		return

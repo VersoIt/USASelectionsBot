@@ -18,8 +18,6 @@ type Config struct {
 	FirstCandidateContainer  string        `yaml:"first-candidate-container"`
 	SecondCandidateContainer string        `yaml:"second-candidate-container"`
 	UpdateDelay              time.Duration `yaml:"update-delay"`
-	BotToken                 string        `yaml:"bot-token"`
-	ChannelId                string        `yaml:"channel-id"`
 	FirstCandidateName       string        `yaml:"first-candidate-name"`
 	SecondCandidateName      string        `yaml:"second-candidate-name"`
 }

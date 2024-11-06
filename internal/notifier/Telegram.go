@@ -41,7 +41,7 @@ func (t *Telegram) Start(ctx context.Context) error {
 
 	log.Println("tg fetcher started!")
 	for {
-		time.Sleep(time.Millisecond * t.updateDelay)
+		time.Sleep(time.Second * 1)
 		log.Println("fetching candidates data...")
 		firstCandidateRes, secondCandidateRes, post, err := t.fetcher.Fetch()
 		if err != nil {
